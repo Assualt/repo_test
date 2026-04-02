@@ -50,4 +50,5 @@ jobs:
           echo "workflow_sha:${{github.workflow_sha}}"
           echo "actor:${{github.actor}}"
           echo "trigger_actor:${{github.triggering_actor}}"
+          echo "temp: ${{github.run_attempt}}"
           echo test, and deploy your project.
