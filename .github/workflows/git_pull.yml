@@ -12,6 +12,11 @@ on:
     paths: 
       - src/code/main.cpp
       - src/code/main2.cpp
+  pull_request_target:
+    branches: [ "main" ]
+    paths: 
+      - src/code/main.cpp
+      - src/code/main2.cpp
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
