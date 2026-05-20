@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print comment
-        run: echo "评论的内容是 ${{github.event.comment.body}}"
+        run: echo "评论的内容是 ${{github.event.comment.body}} event: ${{ toJson(github.event) }}"
