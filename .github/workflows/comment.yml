@@ -7,4 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print comment
-        run: echo "评论的内容是 ${{github.event.comment.body}} event: ${{ toJson(github.event) }}"
+        # 安全做法：通过 env 传递变量，防止恶意输入转义
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          EVENT_JSON: ${{ toJson(github.event) }}
+        # 注意：打印大型 JSON 时，建议使用单引号包裹或通过管道处理，避免特殊字符导致 Shell 报错
+        run: |
+          echo "评论的内容是: $COMMENT_BODY"
+          echo "event JSON 的内容是:"
+          echo "$EVENT_JSON"
