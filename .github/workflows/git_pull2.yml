@@ -33,6 +33,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo begin to show valiable on pull request on-git-pull2.yml
+          cat .github/workflows/git_pull2.yml
           echo "ref:${{github.ref}}"
           echo "head_ref:${{github.head_ref}}"
           echo "base_ref:${{github.base_ref}}"
