@@ -1,0 +1,48 @@
+name: comment_job_test
+on:
+  pull_request_comment:
+    types: [ created, edited, deleted ]
+    branches: [ '*' ]
+    comments: [ 'compile' ]
+  issue_comment:
+    types: [ created, edited, deleted ]
+
+stages:
+  stage1:
+    name: 阶段_1
+    select: selected_by_default
+    jobs:
+      JOB_WJKHX:
+        name: shell1-test
+        select: selected_by_default
+        needs: []
+        steps:
+          - 
+            name: checkout
+            uses: checkout
+          -
+            name: shell1
+            run: | 
+              echo "atomgit:"${{atomgit}}
+        if: "${{ default() }}"
+        runs-on:
+        - default
+    pre:
+    - type: auto
+post: 
+  jobs: 
+    job_identifier: 
+      name: post_job
+      select: selected_by_default 
+      needs: []
+      steps:
+        -
+          name: associate-pr-comment
+          uses: associate-pr-comment
+        -
+          name: shell
+          run: |
+            echo job status:${{pipeline.upstream_status}}
+      if: "${{ default() }}"
+      runs-on:
+      - default 
